@@ -1,0 +1,68 @@
+﻿@page "/"
+@page "/Account/Login"
+
+<h1>Login</h1>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        @(message != "" ? message : "")
+        <section>
+            <EditForm Model="loginModel" method="post" OnValidSubmit="LoginAsync" FormName="login">
+
+                <DataAnnotationsValidator />
+                <h2 class="text-center mb-4">Login to your account</h2>
+                <hr />
+                <ValidationSummary class="text-danger" role="alert" />
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="loginModel.Email" class="form-control"
+                               autocomplete="current-email" aria-required="true" placeholder="Enter your Email" />
+                    <label for="email" class="form-label">Email</label>
+                    <ValidationMessage For="() => loginModel.Email" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText type="password" @bind-Value="loginModel.Password" class="form-control"
+                               autocomplete="current-password" aria-required="true" placeholder="Enter your password" />
+                    <label for="password" class="form-label">Password</label>
+                    <ValidationMessage For="() => loginModel.Password" class="text-danger" />
+                </div>
+                <div>
+                    <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+            </EditForm>
+        </section>
+    </div>
+</div>
+@code {
+    string message = string.Empty;
+    [SupplyParameterFromForm]
+    private LoginModel loginModel { get; set; } = new();
+
+    async Task LoginAsync()
+    {
+        var findUser = await userManager.FindByEmailAsync(loginModel.Email);
+        if (findUser == null)
+        {
+            message = "User is not registered";
+            return;
+        }
+
+        var result = await signInManager.CheckPasswordSignInAsync(findUser, loginModel.Password, false);
+        if (!result.Succeeded)
+        {
+            message = "Invalid email or password";
+            return;
+        }
+
+        await signInManager.PasswordSignInAsync(findUser, loginModel.Password, false, false);
+        navManager.NavigateTo("/home",true);
+    }
+
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "Email is required")]
+        public string Email { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Password is required")]
+        public string Password { get; set; } = string.Empty;
+    }
+}

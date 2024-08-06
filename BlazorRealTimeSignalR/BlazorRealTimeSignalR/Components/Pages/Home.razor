@@ -1,0 +1,18 @@
+﻿@page "/home"
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+<AuthorizeView>
+    <div class="card-header">
+        Welcome
+        @context.User.Claims.Where(f => f.Type == ClaimTypes.Name).Last().Value,
+        You can join the chat now!
+    </div>
+</AuthorizeView>
+Welcome to your new app.

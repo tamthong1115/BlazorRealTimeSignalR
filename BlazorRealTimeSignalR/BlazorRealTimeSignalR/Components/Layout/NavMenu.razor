@@ -1,0 +1,91 @@
+﻿@inject ChatRepo chatRepo
+@inject MyHubConnectionService HubConnectionService
+@rendermode InteractiveServer
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+@using BlazorRealTimeSignalR.Client.ChatServices
+@using BlazorRealTimeSignalR.Repos
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@using Microsoft.AspNetCore.SignalR.Client
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">BlazorRealTimeSignalR</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <CascadingAuthenticationState>
+            <AuthorizeView>
+                <Authorized>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="/home" Match="NavLinkMatch.All">
+                            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                        </NavLink>
+                    </div>
+
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="/group-chat" Match="NavLinkMatch.All">
+                            <span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span> Group Chat
+                        </NavLink>
+                    </div>
+
+                    <div class="nav-item px-3">
+                        <form action="Account/Logout" method="post">
+                            <AntiforgeryToken />
+                            <button class="nav-link" @onclick="LogoutClicked">
+                                <span class="bi bi-arrow-bar-left-nav-menu"></span> Logout
+                            </button>
+                        </form>
+                    </div>
+
+                </Authorized>
+
+                <NotAuthorized>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Login
+                        </NavLink>
+                    </div>
+
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="/Account/Register" Match="NavLinkMatch.All">
+                            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Register
+                        </NavLink>
+                    </div>
+                </NotAuthorized>
+            </AuthorizeView>
+
+        </CascadingAuthenticationState>
+
+    </nav>
+</div>
+
+
+@code {
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationState { get; set; }
+
+    private HubConnection hubConnection;
+
+    protected override void OnInitialized()
+       => hubConnection = HubConnectionService.GetHubConnection();
+
+
+    async Task LogoutClicked()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState?.User;
+
+        var id = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
+        Console.WriteLine($"LogoutClicked: User ID = {id}");
+
+        await chatRepo.RemoveUserAsync(id);
+        await hubConnection.SendAsync("RemoveUserAsync", id);
+
+
+    }
+}

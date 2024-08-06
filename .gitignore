@@ -1,0 +1,35 @@
+# .NET Core build outputs
+bin/
+obj/
+
+# Rider & VS Code directories
+.vscode/
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Auto-generated files
+wwwroot/dist/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.dll
+*.exe
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables files
+.env

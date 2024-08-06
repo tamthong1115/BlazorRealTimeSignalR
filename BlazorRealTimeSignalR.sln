@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorRealTimeSignalR", "BlazorRealTimeSignalR\BlazorRealTimeSignalR\BlazorRealTimeSignalR.csproj", "{EFA33D56-36C5-43E7-8D89-031C55066633}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorRealTimeSignalR.Client", "BlazorRealTimeSignalR\BlazorRealTimeSignalR.Client\BlazorRealTimeSignalR.Client.csproj", "{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatModels", "ChatModels\ChatModels.csproj", "{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FAE7672A-8CC8-4FB3-8754-0C8EAC126ED1}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFA33D56-36C5-43E7-8D89-031C55066633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA33D56-36C5-43E7-8D89-031C55066633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA33D56-36C5-43E7-8D89-031C55066633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA33D56-36C5-43E7-8D89-031C55066633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {768AECEF-7EC0-4201-B873-15701ED7DE56}
+	EndGlobalSection
+EndGlobal

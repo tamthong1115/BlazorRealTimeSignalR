@@ -1,0 +1,115 @@
+﻿@page "/individual-chat"
+@using BlazorRealTimeSignalR.Client.AppStates
+@using BlazorRealTimeSignalR.Client.ChatServices
+@using ChatModels.DTOs
+@using ChatModels.Models
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.SignalR.Client
+@using System.Security.Claims
+@rendermode InteractiveWebAssembly
+@inject MyHubConnectionService HubConnectionService
+@inject NavigationManager NavManager
+@inject AvailableUserState state
+
+
+<PageTitle>Individual Chat</PageTitle>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-header sticky">@state.FullName</div>
+        <div class="card" style="max-height:65vh;min-height:65vh; overflow:scroll;" id="chatContainer">
+            <AuthorizeView>
+                @foreach(var chat in IndividualChats)
+                {
+                    string position = chat.SenderName == context.User.Identity!.Name ? "align-self-end" : "align-self-start";
+                    string style = chat.SenderName == context.User.Identity.Name ? "margin-right:10px" : "margin-left:10px";
+                    string Name = chat.SenderName == context.User.Identity.Name ? "You" : chat.SenderName!;
+                    string Color = chat.SenderName == context.User.Identity.Name ? "text-primary" : "text-info";
+                    <div class="card mt-1 mb-1 d-flex @position" style="width:500px; border-radius:10px; @style">
+                        <div class="card-header">
+                            <small class="@Color"><b>@Name</b></small><br/>
+                            @chat.Message<br/>
+                            <small class="text-muted">@chat.Date.ToString("dd MMM, yyyy hh:mm tt")</small>
+                        </div>
+                    </div>
+                }
+            </AuthorizeView>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-3 mb2">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <EditForm Model="IndividualChatModel" OnValidSubmit="SendIndividualChat">
+            <InputTextArea @bind-Value="IndividualChatModel.Message" class="form-control" placeholder="Message" />
+            <button type="submit" class="btn btn-success float-end mt-3">Send</button>
+        </EditForm>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 d-flex justify-content-center">
+        @if (!HubConnectionService.IsConnected)
+        {
+            <div class="alert alert-danger">Chat Disconnected</div>
+        }
+        else
+        {
+            <div class="alert alert-success">Chat Connected</div>
+        }
+    </div>
+</div>
+
+@code {
+    [CascadingParameter]
+    public Task<AuthenticationState> authenticationState { get; set; }
+    private List<IndividualChatDTO> IndividualChats { get; set; } = new List<IndividualChatDTO>();
+    private IndividualChat IndividualChatModel { get; set; } = new IndividualChat();
+    private HubConnection? _hubConnection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _hubConnection = HubConnectionService.GetHubConnection();
+
+        _hubConnection.On<IndividualChatDTO>("ReceiveIndividualMessage", (chat) =>
+        {
+            IndividualChats.Add(chat);
+            InvokeAsync(() => StateHasChanged());
+        });
+
+        var httpClient = new HttpClient();
+        httpClient.BaseAddress = new Uri(NavManager.BaseUri);
+        var user = new RequestChatDTO()
+            {
+                SenderId = ((await authenticationState).User).Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value,
+                ReceiverId = state.ReceiverId
+            };
+
+        var response = await httpClient.PostAsJsonAsync("api/chat/individual", user);
+        IndividualChats = await response.Content.ReadFromJsonAsync<List<IndividualChatDTO>>();
+    }
+
+    public async void SendIndividualChat()
+    {
+        IndividualChatModel.ReceiverId = state.ReceiverId;
+        IndividualChatModel.SenderId = ((await authenticationState).User)
+        .Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value;
+
+        await _hubConnection!.SendAsync("AddIndividualChat", IndividualChatModel);
+        var data = new IndividualChatDTO()
+            {
+                SenderId = IndividualChatModel.SenderId,
+                ReceiverId = IndividualChatModel.ReceiverId,
+                Message = IndividualChatModel.Message,
+                Date = IndividualChatModel.Date,
+                SenderName = (await authenticationState).User.Identity!.Name,
+                ReceiverName = state.FullName
+            };
+
+        IndividualChats.Add(data);
+        IndividualChatModel = new IndividualChat();
+    }
+}

@@ -1,0 +1,270 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE7672A-8CC8-4FB3-8754-0C8EAC126ED1}|Solution Items{FAE7672A-8CC8-4FB3-8754-0C8EAC126ED1}|C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{FAE7672A-8CC8-4FB3-8754-0C8EAC126ED1}|Solution Items{FAE7672A-8CC8-4FB3-8754-0C8EAC126ED1}|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr\\chathubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr\\chathubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr.client\\pages\\individualchatpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr.client\\pages\\individualchatpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr.client\\pages\\groupchatpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr.client\\pages\\groupchatpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr\\repos\\chatrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr\\repos\\chatrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr.client\\wwwroot\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr.client\\wwwroot\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr.client\\appstates\\availableuserstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E9D64E-CCB9-473D-969A-6DB0E9D3C6DF}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\BlazorRealTimeSignalR.Client.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr.client\\appstates\\availableuserstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}|ChatModels\\ChatModels.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\chatmodels\\dtos\\individualchatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}|ChatModels\\ChatModels.csproj|solutionrelative:chatmodels\\dtos\\individualchatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}|ChatModels\\ChatModels.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\chatmodels\\models\\individualchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFA3B8E-80FE-40F8-84EE-160A5E42C179}|ChatModels\\ChatModels.csproj|solutionrelative:chatmodels\\models\\individualchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|c:\\users\\truon\\source\\repos\\blazorrealtimesignalr\\blazorrealtimesignalr\\blazorrealtimesignalr\\migrations\\20240806020418_group-individual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA33D56-36C5-43E7-8D89-031C55066633}|BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.csproj|solutionrelative:blazorrealtimesignalr\\blazorrealtimesignalr\\migrations\\20240806020418_group-individual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-06T15:34:07.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IndividualChatPage.razor",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\IndividualChatPage.razor",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\IndividualChatPage.razor",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\IndividualChatPage.razor",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\IndividualChatPage.razor",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAAAEwAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-05T18:35:56.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Program.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Program.cs",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T18:34:11.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\ChatHubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\ChatHubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\ChatHubs\\ChatHub.cs",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\ChatHubs\\ChatHub.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAADIAAABeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T15:19:04.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GroupChatPage.razor",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\GroupChatPage.razor",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\GroupChatPage.razor",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\GroupChatPage.razor",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\Pages\\GroupChatPage.razor",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAMwCsAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-05T15:15:38.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChatRepo.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Repos\\ChatRepo.cs",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Repos\\ChatRepo.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Repos\\ChatRepo.cs",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Repos\\ChatRepo.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAkwCsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T01:59:31.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Program.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Program.cs",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T18:33:20.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\wwwroot\\appsettings.json",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\wwwroot\\appsettings.json",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\wwwroot\\appsettings.json",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\wwwroot\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-06T02:34:25.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\appsettings.json",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\appsettings.json",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\appsettings.json",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-06T02:34:38.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAC4AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-06T02:06:19.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Controllers\\ChatController.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Controllers\\ChatController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T01:58:59.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AvailableUserState.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\AppStates\\AvailableUserState.cs",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\AppStates\\AvailableUserState.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\AppStates\\AvailableUserState.cs",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR.Client\\AppStates\\AvailableUserState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T18:32:01.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IndividualChat.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\ChatModels\\Models\\IndividualChat.cs",
+              "RelativeDocumentMoniker": "ChatModels\\Models\\IndividualChat.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\ChatModels\\Models\\IndividualChat.cs",
+              "RelativeToolTip": "ChatModels\\Models\\IndividualChat.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T15:49:30.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20240806020418_Group-Individual.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Migrations\\20240806020418_Group-Individual.cs",
+              "RelativeDocumentMoniker": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Migrations\\20240806020418_Group-Individual.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Migrations\\20240806020418_Group-Individual.cs",
+              "RelativeToolTip": "BlazorRealTimeSignalR\\BlazorRealTimeSignalR\\Migrations\\20240806020418_Group-Individual.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T02:04:19.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IndividualChatDTO.cs",
+              "DocumentMoniker": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\ChatModels\\DTOs\\IndividualChatDTO.cs",
+              "RelativeDocumentMoniker": "ChatModels\\DTOs\\IndividualChatDTO.cs",
+              "ToolTip": "C:\\Users\\truon\\source\\repos\\BlazorRealTimeSignalR\\ChatModels\\DTOs\\IndividualChatDTO.cs",
+              "RelativeToolTip": "ChatModels\\DTOs\\IndividualChatDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA4AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T15:49:02.02Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

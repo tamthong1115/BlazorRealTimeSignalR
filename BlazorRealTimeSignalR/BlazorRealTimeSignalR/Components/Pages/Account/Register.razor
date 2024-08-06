@@ -1,0 +1,80 @@
+﻿@page "/Account/Register"
+
+<h1 class="text-center my-4">Welcome to Blazing Chat</h1>
+<div class="row justify-content-center">
+	<div class="col-md-4">
+		 <section class="form-container">
+		<EditForm Model="registerModel" method="post" OnValidSubmit="RegisterAsync" FormName="register">
+			<DataAnnotationsValidator />
+				<h2 class="text-center mb-4">Create a new account</h2>
+			<hr/>
+			<ValidationSummary class="text-danger" role="alert" />
+			<div class="form-floating mb-3">
+					<InputText @bind-Value="registerModel.FullName" class="form-control"
+							   autocomplete="current-name" aria-required="true" placeholder="Your Full Name" />
+					<label for="name" class="form-label">Full Name</label>
+				<ValidationMessage For="() => registerModel.FullName" class="text-danger" />
+			</div>
+
+			<div class="form-floating mb-3">
+					<InputText @bind-Value="registerModel.Email" class="form-control"
+							   autocomplete="current-email" aria-required="true" placeholder="Enter your Email" />
+					<label for="email" class="form-label">Email</label>
+				<ValidationMessage For="() => registerModel.Email" class="text-danger" />
+			</div>
+
+			<div class="form-floating mb-3">
+					<InputText type="password" @bind-Value="registerModel.Password" class="form-control"
+							   autocomplete="new-password" aria-required="true" placeholder="Enter your password" />
+					<label for="password" class="form-label">Password</label>
+				<ValidationMessage For="() => registerModel.Password" class="text-danger" />
+			</div>
+
+			<div class="form-floating mb-3">
+					<InputText type="password" @bind-Value="registerModel.ConfirmPassword" class="form-control"
+							   autocomplete="new-password" aria-required="true" placeholder="Confirm your password" />
+					<label for="confirm-password" class="form-label">Confirm Password</label>			
+				<ValidationMessage For="() => registerModel.ConfirmPassword" class="text-danger" />
+			</div>
+			<button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+		</EditForm>
+		</section>
+	</div>
+</div>
+
+@code {
+	string Message = "";
+	[SupplyParameterFromForm]
+	RegisterModel registerModel { get; set; } = new();
+
+	async Task RegisterAsync()
+	{
+		var appUser = new AppUser()
+			{
+				FullName = registerModel.FullName,
+				Email = registerModel.Email,
+				PasswordHash = registerModel.Password,
+				UserName = registerModel.FullName
+			};
+		var result = await userManager.CreateAsync(appUser, registerModel.Password);
+		if (!result.Succeeded)
+		{
+			Message = "Error occured whites crating the account";
+			return;
+		}
+		navManager.NavigateTo("/");
+	}
+
+	public class RegisterModel
+	{
+		[Required]
+		public string FullName { get; set; } = string.Empty;
+		[Required, EmailAddress]
+		public string Email { get; set; } = string.Empty;
+		[Required]
+		public string Password { get; set; } = string.Empty;
+		[Compare(nameof(Password)), Required]
+		public string ConfirmPassword { get; set; } = string.Empty;
+
+	}
+}
