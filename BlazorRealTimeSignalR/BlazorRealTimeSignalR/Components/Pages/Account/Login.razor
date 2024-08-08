@@ -1,36 +1,52 @@
 ﻿@page "/"
 @page "/Account/Login"
 
-<h1>Login</h1>
-<div class="row justify-content-center">
-    <div class="col-md-4">
-        @(message != "" ? message : "")
-        <section>
-            <EditForm Model="loginModel" method="post" OnValidSubmit="LoginAsync" FormName="login">
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Authorization
+<div id="container-form">
+    <div class="d-flex flex-column justify-content-center title mx-lg-2">
+        <h1 class="text-center">Chào mừng bạn đến với Blazing Chat</h1>
+        <h2 class="text-center">Bắt đầu trò chuyện luôn đi nào!</h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-ms-4 mx-lg-2">
+            @(message != "" ? message : "")
+            <section class="form-container">
+                <EditForm Context="formContext" Model="loginModel" method="post" OnValidSubmit="LoginAsync" FormName="login">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <DataAnnotationsValidator />
+                        <h2 class="text-center my-4">Đăng nhập tài khoản đi nào!</h2>
 
-                <DataAnnotationsValidator />
-                <h2 class="text-center mb-4">Login to your account</h2>
-                <hr />
-                <ValidationSummary class="text-danger" role="alert" />
+                        <hr />
 
-                <div class="form-floating mb-3">
-                    <InputText @bind-Value="loginModel.Email" class="form-control"
-                               autocomplete="current-email" aria-required="true" placeholder="Enter your Email" />
-                    <label for="email" class="form-label">Email</label>
-                    <ValidationMessage For="() => loginModel.Email" class="text-danger" />
-                </div>
+                        <ValidationSummary class="text-danger" role="alert" />
+                        <div class="form-floating input-form">
+                            <InputText @bind-Value="loginModel.Email" class="form-control" id="userEmail"
+                                       autocomplete="off" aria-required="true" />
+                                       <label for="email" class="form-label">Email</label>
+                            <ValidationMessage For="() => loginModel.Email" class="text-danger" />
 
-                <div class="form-floating mb-3">
-                    <InputText type="password" @bind-Value="loginModel.Password" class="form-control"
-                               autocomplete="current-password" aria-required="true" placeholder="Enter your password" />
-                    <label for="password" class="form-label">Password</label>
-                    <ValidationMessage For="() => loginModel.Password" class="text-danger" />
-                </div>
-                <div>
-                    <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-                </div>
-            </EditForm>
-        </section>
+                        </div>
+                        <div class="form-floating input-form">
+                            <InputText type="password" @bind-Value="loginModel.Password" class="form-control" id="userPassword"
+                                       autocomplete="off" aria-required="true" />
+                            <label for="passwprd" class="form-label">Password</label>
+                            <ValidationMessage For="() => loginModel.Password" class="text-danger" />
+                        </div>
+                        <button type="submit" class="btn">Đăng nhập</button>
+                    </div>
+
+                    <hr />
+
+                    <div class="d-flex justify-content-center align-items-center">
+                        <label>Chưa có tài khoản?</label>
+                        <button type="submit" class="btn">
+                            <NavLink style="color:var(--secondary-color);text-decoration:none;" href="/Account/Register">Đăng kí ngay!</NavLink>
+                        </button>
+                    </div>
+                </EditForm>
+            </section>
+        </div>
     </div>
 </div>
 @code {

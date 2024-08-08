@@ -8,61 +8,97 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @using System.Security.Claims
 @using Microsoft.AspNetCore.SignalR.Client
-<div class="top-row ps-3 navbar navbar-dark">
+
+@using System.ComponentModel.DataAnnotations
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IHttpContextAccessor HttpContentAccessor
+
+@*     <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">BlazorRealTimeSignalR</a>
+    <a class="navbar-brand" href="">BlazorRealTimeSignalR</a>
     </div>
-</div>
+    </div> *@
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<CascadingAuthenticationState>
+    <AuthorizeView>
+        <Authorized>
+            <div class="container-navbar">
+                <div class="info-group">
+                    <div class="title">
+                        <a href="home" style="color:white;">
+                            BlazorChatApp <br />SignalR
+                        </a>
+                    </div>
+                    <a class="account" href="#">
+                        <img class="info-control thumbnail" src="sources/avatar.jpg" />
+                        <div class="info-control account-name">Unknow</div>
+                    </a>
+                </div>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <CascadingAuthenticationState>
-            <AuthorizeView>
-                <Authorized>
-                    <div class="nav-item px-3">
-                        <NavLink class="nav-link" href="/home" Match="NavLinkMatch.All">
-                            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                <div class="navigation">
+                    <div class="item">
+                        <NavLink class="item-link" href="/home" Match="NavLinkMatch.All">
+                            <span>
+                                <img class="icon" src="icon/list.svg" />
+                                Danh bạ
+                            </span>
                         </NavLink>
                     </div>
-
-                    <div class="nav-item px-3">
-                        <NavLink class="nav-link" href="/group-chat" Match="NavLinkMatch.All">
-                            <span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span> Group Chat
+                    <div class="item">
+                        <NavLink class="item-link" href="/group-chat" Match="NavLinkMatch.All">
+                            <span>
+                                <img class="icon" src="/icon/collection.svg" />
+                                Nhóm
+                            </span>
                         </NavLink>
                     </div>
-
-                    <div class="nav-item px-3">
-                        <form action="Account/Logout" method="post">
-                            <AntiforgeryToken />
-                            <button class="nav-link" @onclick="LogoutClicked">
-                                <span class="bi bi-arrow-bar-left-nav-menu"></span> Logout
-                            </button>
-                        </form>
-                    </div>
-
-                </Authorized>
-
-                <NotAuthorized>
-                    <div class="nav-item px-3">
-                        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-                            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Login
+                    <div class="item">
+                        <NavLink class="item-link" href="#" @onclick="LogoutClicked">
+                            <span>
+                                <img class="icon" src="/icon/box-arrow-left.svg" />
+                                Đăng xuất
+                            </span>
                         </NavLink>
                     </div>
+                </div>
+            </div>
 
-                    <div class="nav-item px-3">
-                        <NavLink class="nav-link" href="/Account/Register" Match="NavLinkMatch.All">
-                            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Register
-                        </NavLink>
+        </Authorized>
+
+        <NotAuthorized>
+            <div class="container-navbar">
+                <div class="info-group">
+                    <div class="title">
+                        <a href="home" style="color:white;">
+                            BlazorChatApp <br />SignalR
+                        </a>
                     </div>
-                </NotAuthorized>
-            </AuthorizeView>
+                    <div class="navigation">
+                        <div class="item">
+                            <NavLink class="item-link" href="/Account/Login" Match="NavLinkMatch.All">
+                                <span>
+                                    <img class="icon" src="/icon/door-open.svg" /> Đăng nhập
+                                </span>
+                            </NavLink>
+                        </div>
 
-        </CascadingAuthenticationState>
+                        <div class="item">
+                            <NavLink class="item-link" href="/Account/Register" Match="NavLinkMatch.All">
+                                <span>
+                                    <img class="icon" src="/icon/person-plus.svg" />
+                                    Đăng kí
+                                </span>
+                            </NavLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </NotAuthorized>
+    </AuthorizeView>
 
-    </nav>
-</div>
+</CascadingAuthenticationState>
+
+
 
 
 @code {
