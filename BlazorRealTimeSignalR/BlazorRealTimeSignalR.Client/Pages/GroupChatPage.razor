@@ -16,38 +16,35 @@
 @inject MyHubConnectionService HubConnectionService
 
 <PageTitle>ChatPage</PageTitle>
-<div class="row">
-    <div class="col-lg-3">
-        <div class="card">
-            <div class="card-header text-success">Online Users</div>
-            <div class="card-body">
-                <ul class="list-group list-group-action">
-                    <AuthorizeView>
-                        @if (AvailableUsers != null)
+<div id="container">
+    <div class="list-users">
+        <div class="title-list">Online Users</div>
+        <hr class="line" />
+        <div class="list-content">
+            <ul>
+                <AuthorizeView>
+                    @if (AvailableUsers != null)
+                    {
+                        foreach (var user in AvailableUsers)
                         {
-                            foreach (var user in AvailableUsers)
+                            var current = user;
+                            if (current.UserId != @context.User.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value)
                             {
-                                var current = user;
-                                if (current.UserId != @context.User.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value)
-                                {
-                                    <li class="list-group-item list-group-item-action" style="cursor:pointer">
-                                        <a class="nav-link text-success" @onclick="() => ChatUser(current)">@user.FullName</a>
-                                    </li>
-                                }
-
+                                <li class="list-group-item list-group-item-action" style="cursor:pointer">
+                                    <a class="nav-link text-success" @onclick="() => ChatUser(current)">@user.FullName</a>
+                                </li>
                             }
                         }
-                        @if (AvailableUsers!.Count == 0)
-                        {
-                            <span class="fw-bold text-success">No User Online</span>
-                        }
-                    </AuthorizeView>
-                </ul>
-            </div>
+                    }
+                    @if (AvailableUsers!.Count == 0)
+                    {
+                        <span class="fw-bold text-success">No User Online</span>
+                    }
+                </AuthorizeView>
+            </ul>
         </div>
     </div>
-    <div class="col-lg-9">
-        <div class="card-header sticky">Group Chats</div>
+    <div class="chat-area">
         <div class="card" style="max-height:65vh;min-height:65vh;overflow:scroll;" id="chatContainer">
             <AuthorizeView>
                 @foreach (var chat in GroupChats)
@@ -66,32 +63,31 @@
                 }
             </AuthorizeView>
         </div>
+        <div class="sender">
+            <EditForm Model="GroupChat" OnValidSubmit="SendChatToGroup" class="form-sender">
+                <InputTextArea @bind-Value="GroupChat.Message" class="form-control" placeholder="Message" />
+                <button type="submit" class="btn-success">Send</button>
+            </EditForm>
+        </div>
+
+        <div class="status">
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    @if (!HubConnectionService.IsConnected)
+                    {
+                        <div class="alert alert-danger">Chat Disconnected</div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-success">Chat Connected</div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="row mt-3 mb2">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-        <EditForm Model="GroupChat" OnValidSubmit="SendChatToGroup">
-            <InputTextArea @bind-Value="GroupChat.Message" class="form-control" placeholder="Message" />
-            <button type="submit" class="btn btn-success float-end mt-3">Send</button>
-        </EditForm>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12 d-flex justify-content-center">
-        @if (!HubConnectionService.IsConnected)
-        {
-            <div class="alert alert-danger">Chat Disconnected</div>
-        }
-        else
-        {
-            <div class="alert alert-success">Chat Connected</div>
-        }
-    </div>
-</div>
 
 @code {
     public List<AvailableUserDTO> AvailableUsers { get; set; } = new List<AvailableUserDTO>();
@@ -133,7 +129,7 @@
         await _hubConnection!.SendAsync("AddAvailableUserAsync", new AvailableUser()
             {
                 UserId = user.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value
-            }); 
+            });
     }
 
 
@@ -142,7 +138,7 @@
         GroupChat.SenderId = (await AuthenticationState).User.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value;
         await _hubConnection!.SendAsync("SendMessageToGroup", GroupChat);
         GroupChat = new();
-        
+
     }
 
     private void ChatUser(AvailableUserDTO availableUserDTO)
