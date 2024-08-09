@@ -41,6 +41,15 @@
     justify-content: space-evenly;
 }
 
+.submit-btn{
+    width:auto;
+    padding:10px 15px;
+    border:none;
+    background-color:var(--primary-color);
+    border-radius:5px;
+    color:white;
+}
+
 @media (min-width:650px) {
     .form {
         justify-content: center;

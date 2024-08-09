@@ -26,10 +26,15 @@
 
     protected override void OnInitialized()
     {
-        if (now.Hour <= 10 && now.Hour>=0)
+        if (now.Hour <= 10 && now.Hour >= 0)
         {
             hello = "Good morning!";
-        }else if(now.Hour>10)
+        }
+        else if (now.Hour > 10 && now.Hour < 18)
+        {
+            hello = "Good Afternoon!";
+        }
+        else hello = "Good evening!";
     }
 
 }

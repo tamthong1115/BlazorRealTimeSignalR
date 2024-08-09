@@ -31,7 +31,7 @@
                     </div>
                     <a class="account" href="#">
                         <img class="info-control thumbnail" src="sources/avatar.jpg" />
-                        <div class="info-control account-name">Unknow</div>
+                        <div class="info-control account-name">@FullName</div>
                     </a>
                 </div>
 
@@ -106,9 +106,12 @@
     public Task<AuthenticationState> AuthenticationState { get; set; }
 
     private HubConnection hubConnection;
+    string FullName = "Undefined";
 
-    protected override void OnInitialized()
-       => hubConnection = HubConnectionService.GetHubConnection();
+    protected override void OnInitialized(){
+        hubConnection = HubConnectionService.GetHubConnection();
+       FullName = HttpContentAccessor.HttpContext.User.Identity.Name;
+    }
 
 
     async Task LogoutClicked()
@@ -121,7 +124,6 @@
 
         await chatRepo.RemoveUserAsync(id);
         await hubConnection.SendAsync("RemoveUserAsync", id);
-
-
     }
+
 }
