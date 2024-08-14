@@ -25,7 +25,13 @@
         color: white;
         background-color: #0264ceff;
     }
-
+    
+    .unactive{
+        background-color:transparent;
+        color:var(--primary-color);
+        padding:0;
+        border:none;
+    }
 .input-form {
     width: 100%;
 }

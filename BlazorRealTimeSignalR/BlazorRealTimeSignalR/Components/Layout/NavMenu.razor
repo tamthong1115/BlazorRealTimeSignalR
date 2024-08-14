@@ -53,12 +53,15 @@
                         </NavLink>
                     </div>
                     <div class="item">
-                        <NavLink class="item-link" href="#" @onclick="LogoutClicked">
-                            <span>
-                                <img class="icon" src="/icon/box-arrow-left.svg" />
-                                Đăng xuất
-                            </span>
-                        </NavLink>
+                        <form action="Account/Logout" method="post">
+                            <AntiforgeryToken />
+                            <button class="item-btn" @onclick="LogoutClicked">
+                                <span>
+                                    <img class="icon" src="/icon/box-arrow-left.svg" />
+                                    Đăng xuất
+                                </span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -108,22 +111,27 @@
     private HubConnection hubConnection;
     string FullName = "Undefined";
 
-    protected override void OnInitialized(){
+    protected override void OnInitialized()
+    {
+        FullName = HttpContentAccessor.HttpContext.User.Identity.Name;
         hubConnection = HubConnectionService.GetHubConnection();
-       FullName = HttpContentAccessor.HttpContext.User.Identity.Name;
     }
+
 
 
     async Task LogoutClicked()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState?.User;
+        if (user != null)
+        {
+            var id = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
+            Console.WriteLine($"LogoutClicked: User ID = {id}");
 
-        var id = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
-        Console.WriteLine($"LogoutClicked: User ID = {id}");
-
-        await chatRepo.RemoveUserAsync(id);
-        await hubConnection.SendAsync("RemoveUserAsync", id);
+            await chatRepo.RemoveUserAsync(id);
+            await hubConnection.SendAsync("RemoveUserAsync", id);
+            // navManager.NavigateTo("/", true);
+        }
     }
 
 }

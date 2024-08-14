@@ -82,6 +82,12 @@ a.account {
         text-decoration: none;
         background-color: none;
     }
+    .navigation ::deep .item-btn {
+        border: none;
+        background-color: transparent;
+        color: white;
+        font-weight: normal;
+    }
 
     .navigation:first-of-type {
         padding: 1rem;
