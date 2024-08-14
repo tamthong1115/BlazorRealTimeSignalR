@@ -14,11 +14,11 @@ namespace BlazorRealTimeSignalR.Repos
         {
             var entity = appDbContext.GroupChats.Add(chat).Entity;
             await appDbContext.SaveChangesAsync();
+
             return new GroupChatDTO()
             {
                 SenderId = entity.SenderId,
                 SenderName = (await userManager.FindByIdAsync(entity.SenderId!))!.FullName,
-                DateTime = entity.DateTime,
                 Id = entity.Id,
                 Message = entity.Message
             };
