@@ -2,17 +2,39 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Authorization
+@using System
 @attribute [Authorize]
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
 
 <AuthorizeView>
-    <div class="card-header">
-        Welcome
-        @context.User.Claims.Where(f => f.Type == ClaimTypes.Name).Last().Value,
-        You can join the chat now!
+    <div class="container">
+        <h1>@hello</h1>
+        <div class="greeting">
+            Welcome
+            @context.User.Claims.Where(f => f.Type == ClaimTypes.Name).Last().Value,
+            You can join the chat now!
+        </div>
     </div>
 </AuthorizeView>
-Welcome to your new app.
+@code {
+    string hello = "Good luck";
+
+    private DateTime now = DateTime.Now;
+
+
+    protected override void OnInitialized()
+    {
+        if (now.Hour <= 10 && now.Hour >= 0)
+        {
+            hello = "Good morning!";
+        }
+        else if (now.Hour > 10 && now.Hour < 18)
+        {
+            hello = "Good Afternoon!";
+        }
+        else hello = "Good evening!";
+    }
+
+}

@@ -1,50 +1,78 @@
 ﻿@page "/Account/Register"
+@if (MessageError.Capacity != 0)
+{
+    <div class="list-error">
+        @foreach (string error in MessageError)
+        {
+            <div class="error-container">
+                <div class="error-message">
+                    <div class="title-error">Warning</div>
+                    <div class="content-error">@error</div>
+                </div>
+            </div>
+        }
+    </div>
+}
+<div class="container">
+    <div class="d-flex flex-column justify-content-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h1 class="text-center my-4 mx-3">Chào mừng bạn đến với Blazing Chat</h1>
+            <h2 class="text-center my-4 mx-3">Hãy tạo tài khoản ngay đi nào!</h2>
+        </div>
+    </div>
+    <div class="form">
+        <div class="mx-3">
+            <section class="form-container">
+                <h2 class="text-center mb-4">Tạo tài khoản mới</h2>
+                <hr />
+                <EditForm Model="registerModel" method="post" OnValidSubmit="RegisterAsync" FormName="register">
+                    <div class="d-flex flex-lg-wrap form">
+                        <DataAnnotationsValidator />
+                        @*                          <ValidationSummary class="text-danger" role="alert" />
+                        *@
+                        <div class="form-floating mb-3 mx-1">
+                            <label for="name" class="form-label">Tên tài khoản</label>
+                            <InputText @bind-Value="registerModel.FullName" class="form-control"
+                                       autocomplete="current-name" aria-required="true" placeholder="Tên tài khoản" />
+                            <ValidationMessage For="() => registerModel.FullName" class="text-danger" />
+                        </div>
 
-<h1 class="text-center my-4">Welcome to Blazing Chat</h1>
-<div class="row justify-content-center">
-	<div class="col-md-4">
-		 <section class="form-container">
-		<EditForm Model="registerModel" method="post" OnValidSubmit="RegisterAsync" FormName="register">
-			<DataAnnotationsValidator />
-				<h2 class="text-center mb-4">Create a new account</h2>
-			<hr/>
-			<ValidationSummary class="text-danger" role="alert" />
-			<div class="form-floating mb-3">
-					<InputText @bind-Value="registerModel.FullName" class="form-control"
-							   autocomplete="current-name" aria-required="true" placeholder="Your Full Name" />
-					<label for="name" class="form-label">Full Name</label>
-				<ValidationMessage For="() => registerModel.FullName" class="text-danger" />
-			</div>
+                        <div class="form-floating mb-3 mx-1">
+                            <label for="email" class="form-label">Email là?</label>
+                            <InputText @bind-Value="registerModel.Email" class="form-control"
+                                       autocomplete="current-email" aria-required="true" placeholder="Email của bạn" />
+                            <ValidationMessage For="() => registerModel.Email" class="text-danger" />
+                        </div>
 
-			<div class="form-floating mb-3">
-					<InputText @bind-Value="registerModel.Email" class="form-control"
-							   autocomplete="current-email" aria-required="true" placeholder="Enter your Email" />
-					<label for="email" class="form-label">Email</label>
-				<ValidationMessage For="() => registerModel.Email" class="text-danger" />
-			</div>
+                        <div class="form-floating mb-3 mx-1">
+                            <label for="password" class="form-label">Mật khẩu là?</label>
+                            <InputText type="password" @bind-Value="registerModel.Password" class="form-control"
+                                       autocomplete="new-password" aria-required="true" placeholder="Mật khẩu của bạn" />
 
-			<div class="form-floating mb-3">
-					<InputText type="password" @bind-Value="registerModel.Password" class="form-control"
-							   autocomplete="new-password" aria-required="true" placeholder="Enter your password" />
-					<label for="password" class="form-label">Password</label>
-				<ValidationMessage For="() => registerModel.Password" class="text-danger" />
-			</div>
+                            <ValidationMessage For="() => registerModel.Password" class="text-danger" />
+                        </div>
 
-			<div class="form-floating mb-3">
-					<InputText type="password" @bind-Value="registerModel.ConfirmPassword" class="form-control"
-							   autocomplete="new-password" aria-required="true" placeholder="Confirm your password" />
-					<label for="confirm-password" class="form-label">Confirm Password</label>			
-				<ValidationMessage For="() => registerModel.ConfirmPassword" class="text-danger" />
-			</div>
-			<button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-		</EditForm>
-		</section>
-	</div>
+                        <div class="form-floating mb-3 mx-1">
+                            <label for="confirm-password" class="form-label">Nhắc lại mật khẩu</label>
+                            <InputText type="password" @bind-Value="registerModel.ConfirmPassword" class="form-control"
+                                       autocomplete="new-password" aria-required="true" placeholder="Mật khẩu của bạn" />
+
+                            <ValidationMessage For="() => registerModel.ConfirmPassword" class="text-danger" />
+                        </div>
+                    </div>
+                    <div class=" row d-flex justify-content-around flex-row">
+                        <button type="submit" class=" submit-btn">Register</button>
+                    </div>
+                </EditForm>
+            </section>
+        </div>
+    </div>
+
 </div>
 
 @code {
-	string Message = "";
-	[SupplyParameterFromForm]
+        List<string> MessageError = new List<string>();
+        [SupplyParameterFromForm]
 	RegisterModel registerModel { get; set; } = new();
 
 	async Task RegisterAsync()
@@ -59,8 +87,12 @@
 		var result = await userManager.CreateAsync(appUser, registerModel.Password);
 		if (!result.Succeeded)
 		{
-			Message = "Error occured whites crating the account";
-			return;
+                MessageError.Add("Errors accurred while creating the account");
+                foreach (var error in result.Errors)
+                {
+                    MessageError.Add($"{error.Code}: {error.Description}");
+                }
+                return; 
 		}
 		navManager.NavigateTo("/");
 	}

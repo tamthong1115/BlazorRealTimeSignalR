@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ChatModels\ChatModels.csproj" />
     <ProjectReference Include="..\BlazorRealTimeSignalR.Client\BlazorRealTimeSignalR.Client.csproj" />
+    <PackageReference Include="CookieManager" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
