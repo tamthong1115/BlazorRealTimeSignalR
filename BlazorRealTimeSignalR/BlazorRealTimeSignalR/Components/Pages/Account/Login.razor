@@ -1,5 +1,4 @@
-﻿@page "/"
-@page "/Account/Login"
+﻿@page "/Account/Login"
 
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Components.Authorization
@@ -71,7 +70,7 @@
         }
 
         await signInManager.PasswordSignInAsync(findUser, loginModel.Password, false, false);
-        navManager.NavigateTo("/home",true);
+        navManager.NavigateTo("/",true);
     }
 
     public class LoginModel

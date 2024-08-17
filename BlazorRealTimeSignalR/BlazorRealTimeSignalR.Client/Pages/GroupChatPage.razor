@@ -1,5 +1,6 @@
 ﻿@page "/group-chat"
 @attribute [Authorize]
+@using Microsoft.JSInterop
 @using BlazorRealTimeSignalR.Client.AppStates
 @using ChatModels
 @using BlazorRealTimeSignalR.Client.ChatServices
@@ -63,6 +64,7 @@
                         </div>
                     </div>
                 }
+                <div id="end"></div>
             </AuthorizeView>
         </div>
         <div class="sender">
@@ -89,6 +91,17 @@
         </div>
     </div>
 </div>
+<script>
+
+    setTimeout(() => {
+        const chatContainer = document.getElementById('chatContainer');
+        const end = document.getElementById('end');
+        if (chatContainer) {
+            end.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 1000); // Adjust delay as needed
+
+</script>
 
 <audio id="messageSentSound" src="sounds/message-sent.mp3" preload="auto"></audio>
 <audio id="messageReceivedSound" src="sounds/message-received.mp3" preload="auto"></audio>
@@ -110,9 +123,6 @@
 
     [CascadingParameter]
     public Task<AuthenticationState> AuthenticationState { get; set; }
-
-
-
 
     protected override async Task OnInitializedAsync()
     {
@@ -149,6 +159,7 @@
 
 
     public async Task SendChatToGroup()
+
     {
         GroupChat.SenderId = (await AuthenticationState).User.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value;
         await _hubConnection!.SendAsync("SendMessageToGroup", GroupChat);
@@ -166,4 +177,6 @@
     }
 
    
+
 }
+
