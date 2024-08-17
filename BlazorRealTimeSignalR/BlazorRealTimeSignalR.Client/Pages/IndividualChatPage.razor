@@ -10,7 +10,7 @@
 @inject MyHubConnectionService HubConnectionService
 @inject NavigationManager NavManager
 @inject AvailableUserState state
-
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Individual Chat</PageTitle>
 
@@ -63,6 +63,16 @@
     </div>
 </div>
 
+<audio id="messageSentSound" src="sounds/message-sent.mp3" preload="auto"></audio>
+<audio id="messageReceivedSound" src="sounds/message-received.mp3" preload="auto"></audio>
+<script>
+    function playSound(soundId) {
+        var sound = document.getElementById(soundId);
+        if (sound) {
+            sound.play();
+        }
+    }
+</script>
 @code {
     [CascadingParameter]
     public Task<AuthenticationState> authenticationState { get; set; }
@@ -111,5 +121,9 @@
 
         IndividualChats.Add(data);
         IndividualChatModel = new IndividualChat();
+
+        // Play the message sent sound
+        await JSRuntime.InvokeVoidAsync("playSound", "messageSentSound");
     }
 }
+

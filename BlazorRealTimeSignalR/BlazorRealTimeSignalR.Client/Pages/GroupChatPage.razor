@@ -15,6 +15,8 @@
 @inject HttpClient httpClient
 @inject AvailableUserState state
 @inject MyHubConnectionService HubConnectionService
+@inject IJSRuntime JSRuntime
+
 
 <PageTitle>ChatPage</PageTitle>
 <div id="container">
@@ -101,6 +103,17 @@
 
 </script>
 
+<audio id="messageSentSound" src="sounds/message-sent.mp3" preload="auto"></audio>
+<audio id="messageReceivedSound" src="sounds/message-received.mp3" preload="auto"></audio>
+
+<script>
+    function playSound(soundId) {
+        var sound = document.getElementById(soundId);
+        if (sound) {
+            sound.play();
+        }
+    }
+</script>
 
 @code {
     public List<AvailableUserDTO> AvailableUsers { get; set; } = new List<AvailableUserDTO>();
@@ -115,10 +128,12 @@
     {
         _hubConnection = HubConnectionService.GetHubConnection();
 
-        _hubConnection.On<GroupChatDTO>("ReceiveGroupMessages", (chat) =>
+        _hubConnection.On<GroupChatDTO>("ReceiveGroupMessages", async(chat) =>
         {
             GroupChats.Add(chat);
             InvokeAsync(() => StateHasChanged());
+            // Play the message received sound
+            await JSRuntime.InvokeVoidAsync("playSound", "messageReceivedSound");
         });
 
         _hubConnection.On<List<AvailableUserDTO>>("NotifyAllClients", (users) =>
@@ -142,11 +157,16 @@
             });
     }
 
-    public async void SendChatToGroup()
+
+    public async Task SendChatToGroup()
+
     {
         GroupChat.SenderId = (await AuthenticationState).User.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value;
         await _hubConnection!.SendAsync("SendMessageToGroup", GroupChat);
         GroupChat = new();
+
+        // Play the message sent sound
+        await JSRuntime.InvokeVoidAsync("playSound", "messageSentSound");
 
     }
 
@@ -155,6 +175,8 @@
         state.SetStates(availableUserDTO.FullName!, availableUserDTO.UserId!);
         NavManager.NavigateTo("/individual-chat");
     }
+
+   
 
 }
 
