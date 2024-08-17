@@ -3,6 +3,7 @@ using ChatModels;
 using ChatModels.DTOs;
 using ChatModels.Models;
 using Microsoft.AspNetCore.SignalR;
+using System;
 
 namespace BlazorRealTimeSignalR.ChatHubs
 {
@@ -49,6 +50,8 @@ namespace BlazorRealTimeSignalR.ChatHubs
             };
 
             await Clients.User(individualChat.ReceiverId!).SendAsync("ReceiveIndividualMessage", prepareIndividualChat);
+            // Save the chat to the database or perform other actions
+            
         }
     }
 }
