@@ -1,5 +1,6 @@
 ﻿@page "/group-chat"
 @attribute [Authorize]
+@using Microsoft.JSInterop
 @using BlazorRealTimeSignalR.Client.AppStates
 @using ChatModels
 @using BlazorRealTimeSignalR.Client.ChatServices
@@ -61,6 +62,7 @@
                         </div>
                     </div>
                 }
+                <div id="end"></div>
             </AuthorizeView>
         </div>
         <div class="sender">
@@ -87,6 +89,17 @@
         </div>
     </div>
 </div>
+<script>
+
+    setTimeout(() => {
+        const chatContainer = document.getElementById('chatContainer');
+        const end = document.getElementById('end');
+        if (chatContainer) {
+            end.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 1000); // Adjust delay as needed
+
+</script>
 
 
 @code {
@@ -97,9 +110,6 @@
 
     [CascadingParameter]
     public Task<AuthenticationState> AuthenticationState { get; set; }
-
-
-
 
     protected override async Task OnInitializedAsync()
     {
@@ -132,7 +142,6 @@
             });
     }
 
-
     public async void SendChatToGroup()
     {
         GroupChat.SenderId = (await AuthenticationState).User.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value;
@@ -146,4 +155,6 @@
         state.SetStates(availableUserDTO.FullName!, availableUserDTO.UserId!);
         NavManager.NavigateTo("/individual-chat");
     }
+
 }
+
