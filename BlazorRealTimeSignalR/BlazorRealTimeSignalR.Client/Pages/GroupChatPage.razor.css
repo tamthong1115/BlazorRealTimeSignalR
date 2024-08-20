@@ -1,4 +1,4 @@
-﻿body {
+﻿﻿body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
     margin: 0;
@@ -63,20 +63,22 @@
     }
 
     .chat-area ::deep .form-sender {
-        height:max-content;
-        margin-bottom:10px;
+        height: max-content;
+        margin-bottom: 10px;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items:center;
-        resize:none;
+        align-items: center;
+        resize: none;
     }
+
     .chat-area ::deep .btn-success {
         background-color: #28a745;
         border: none;
         border-radius: 20px;
         padding: 10px 20px;
     }
+
         .chat-area ::deep .btn-success:hover {
             background-color: #218838;
         }
@@ -95,7 +97,6 @@
 
 .list-group-item {
     border: none;
-    padding: 10px 20px;
     transition: background-color 0.3s ease;
 }
 
@@ -106,6 +107,7 @@
 .nav-link {
     text-decoration: none;
     color: #28a745;
+
 }
 
     .nav-link:hover {
@@ -157,7 +159,6 @@
 }*/
 
 .btn-success {
-
 }
 
     .btn-success:hover {

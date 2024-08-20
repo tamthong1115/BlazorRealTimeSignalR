@@ -24,7 +24,7 @@
         <div class="title-list">Online Users</div>
         <hr class="line" />
         <div class="list-content">
-            <ul>
+            <ul style="text-align: center;">
                 <AuthorizeView>
                     @if (AvailableUsers != null)
                     {
@@ -56,7 +56,7 @@
                     string style = chat.SenderName == context.User.Identity.Name ? "margin-right:6px" : "margin-left:6px";
                     string Name = chat.SenderName == context.User.Identity.Name ? "You" : chat.SenderName!;
                     string Color = chat.SenderName == context.User.Identity.Name ? "text-primary" : "text-info";
-                    <div class="card mt-1 mb-1 d-flex @posistion" style="width:500px; border-radius:10px;@style">
+                    <div class="card mt-1 mb-1 d-flex @posistion" style="width:40%; border-radius:10px;@style">
                         <div class="card-header">
                             <small class="@Color"><b>@Name</b></small><br />
                             @chat.Message<br />
@@ -64,13 +64,13 @@
                         </div>
                     </div>
                 }
-                <div id="end"></div>
+                <div id="end" style=""></div>
             </AuthorizeView>
         </div>
         <div class="sender">
             <EditForm Model="GroupChat" OnValidSubmit="SendChatToGroup" class="form-sender">
                 <InputTextArea @bind-Value="GroupChat.Message" class="form-control" placeholder="Message" />
-                <button type="submit" class="btn-success">Send</button>
+                <button type="submit" class="btn-success" onclick="scrollToTheEnd">Send</button>
             </EditForm>
         </div>
 
@@ -92,7 +92,18 @@
     </div>
 </div>
 <script>
-
+    function scrollToTheEnd() {
+        // const c = document.getElementById("chatContainer");
+        // c.scrollTop += 500;
+        // c.
+        setTimeout(() => {
+            const chatContainer = document.getElementById('chatContainer');
+            const end = document.getElementById('end');
+            if (chatContainer) {
+                end.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100); // Adjust delay as needed
+    }
     setTimeout(() => {
         const chatContainer = document.getElementById('chatContainer');
         const end = document.getElementById('end');
@@ -116,6 +127,8 @@
 </script>
 
 @code {
+    bool isRendered = false;
+
     public List<AvailableUserDTO> AvailableUsers { get; set; } = new List<AvailableUserDTO>();
     private GroupChat GroupChat { get; set; } = new();
     private HubConnection? _hubConnection;
@@ -128,7 +141,7 @@
     {
         _hubConnection = HubConnectionService.GetHubConnection();
 
-        _hubConnection.On<GroupChatDTO>("ReceiveGroupMessages", async(chat) =>
+        _hubConnection.On<GroupChatDTO>("ReceiveGroupMessages", async (chat) =>
         {
             GroupChats.Add(chat);
             InvokeAsync(() => StateHasChanged());
@@ -159,7 +172,6 @@
 
 
     public async Task SendChatToGroup()
-
     {
         GroupChat.SenderId = (await AuthenticationState).User.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)!.Value;
         await _hubConnection!.SendAsync("SendMessageToGroup", GroupChat);
@@ -167,16 +179,12 @@
 
         // Play the message sent sound
         await JSRuntime.InvokeVoidAsync("playSound", "messageSentSound");
+        await JSRuntime.InvokeVoidAsync("scrollToTheEnd", "");
 
     }
-
     private void ChatUser(AvailableUserDTO availableUserDTO)
     {
         state.SetStates(availableUserDTO.FullName!, availableUserDTO.UserId!);
         NavManager.NavigateTo("/individual-chat");
     }
-
-   
-
 }
-

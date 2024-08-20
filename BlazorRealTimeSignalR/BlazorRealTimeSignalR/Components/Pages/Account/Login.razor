@@ -9,7 +9,14 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-ms-4 mx-lg-2">
-            @(message != "" ? message : "")
+            <div class="notify">
+                @if (@message != "")
+                {
+                    <div style="padding:10px;">
+                        @message
+                    </div>
+                }
+            </div>
             <section class="form-container">
                 <EditForm Context="formContext" Model="loginModel" method="post" OnValidSubmit="LoginAsync" FormName="login">
                     <div class="d-flex flex-column justify-content-center align-items-center">
@@ -22,14 +29,14 @@
                         <div class="form-floating input-form">
                             <InputText @bind-Value="loginModel.Email" class="form-control" id="userEmail"
                                        autocomplete="off" aria-required="true" />
-                                       <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <ValidationMessage For="() => loginModel.Email" class="text-danger" />
 
                         </div>
                         <div class="form-floating input-form">
                             <InputText type="password" @bind-Value="loginModel.Password" class="form-control" id="userPassword"
                                        autocomplete="off" aria-required="true" />
-                            <label for="passwprd" class="form-label">Password</label>
+                            <label for="passwprd" class="form-label">Mật khẩu</label>
                             <ValidationMessage For="() => loginModel.Password" class="text-danger" />
                         </div>
                         <button type="submit" class="btn">Đăng nhập</button>
@@ -58,19 +65,19 @@
         var findUser = await userManager.FindByEmailAsync(loginModel.Email);
         if (findUser == null)
         {
-            message = "User is not registered";
+            message = "Tài khoản không tồn tại";
             return;
         }
 
         var result = await signInManager.CheckPasswordSignInAsync(findUser, loginModel.Password, false);
         if (!result.Succeeded)
         {
-            message = "Invalid email or password";
+            message = "Sai email hoặc mật khẩu";
             return;
         }
 
         await signInManager.PasswordSignInAsync(findUser, loginModel.Password, false, false);
-        navManager.NavigateTo("/",true);
+        navManager.NavigateTo("/", true);
     }
 
     public class LoginModel
