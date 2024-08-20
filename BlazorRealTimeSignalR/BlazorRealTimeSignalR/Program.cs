@@ -24,6 +24,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddDbContext<AppDbContext>
     (o => o.UseSqlite(builder.Configuration.GetConnectionString("Default")));
+
 builder.Services.AddControllers();
 builder.Services.AddScoped<AvailableUserState>();
 builder.Services.AddScoped<ChatRepo>();
